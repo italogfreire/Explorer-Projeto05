@@ -1,0 +1,78 @@
+:root{
+  /*Fontes*/
+
+  --ff-heading: 'Epilogue', sans-serif;
+  --ff-text: 'Open sans', sans-serif;
+
+  /*Colors*/
+
+  --hue: 250;
+  --bg-primary: hsla(var(--hue), 22%, 20%);
+  --fc-primary: hsla(var(--hue), 0%, 100%);
+  --fc-secondary: hsla(var(--hue), 50%, 80%);
+
+  /*Tamanhos de fonte*/
+  
+  font-size: 62,5%; 
+  --fs-body: 1.6rem;
+  --fs-heading: 4.0rem;
+}
+
+body{
+  font-family: var(--ff-text);
+  font-size: var(--fs-body);
+
+  background: var(--bg-primary);
+  color: var(--fc-primary);
+}
+
+.page{
+  max-width: 33rem;
+  margin: 0 auto;
+}
+
+img{
+  width: 100%;
+  height: auto;
+}
+
+header{
+  margin: 10rem 0 8rem;
+
+  font-family: var(--ff-heading);
+
+  text-align: center;  
+
+}
+
+header P {
+  color: var(--fc-secondary);
+  text-transform: uppercase;
+
+  line-height: 3.2rem;
+  letter-spacing: 3px;
+
+  font-weight: 400;
+
+  margin-bottom: 1.7rem;
+}
+
+header h1{
+  font-size: var(--fs-heading);
+  line-height: 4.8rem;
+}
+
+.card{
+  position: relative;
+}
+
+.card img{
+  height: 41.6rem;
+  object-fit: cover;
+}
+
+.card h2{
+  position: absolute;
+  bottom: 5.2rem;
+  left: 2.8rem;
+}
