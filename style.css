@@ -10,6 +10,8 @@
   --bg-primary: hsla(var(--hue), 22%, 20%);
   --fc-primary: hsla(var(--hue), 0%, 100%);
   --fc-secondary: hsla(var(--hue), 50%, 80%);
+  --fc-secondary-dark: hsl(var(--hue), 100%, 11%);
+
 
   /*Tamanhos de fonte*/
   
@@ -62,17 +64,58 @@ header h1{
   line-height: 4.8rem;
 }
 
+main{
+  display: grid;
+  gap: 3.2rem;
+
+}
+
 .card{
   position: relative;
+
+  font-family: var(--ff-heading);
 }
 
 .card img{
   height: 41.6rem;
   object-fit: cover;
+
+  border-radius: 6px;
+  transition: all 200ms;
+}
+
+.card img:hover{
+  transform: scale(1.1); /* Faz com que a nossa imagem dê um zoom*/
+  transition-property: transform; /* Aqui informamos aonde nossa transition será aplicada*/
+  opacity: 0.4;
 }
 
 .card h2{
   position: absolute;
   bottom: 5.2rem;
   left: 2.8rem;
+
+  font-size: var(--fs-heading);
+  font-weight: 800;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+
+}
+
+.card h2 span{
+  color: var(--fc-secondary-dark);
+
+  background-color: var(--fc-primary);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  border-radius: 1.9rem;
+
+  padding: 0 1.6rem;
+  height: 3.8rem;
+
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
 }
