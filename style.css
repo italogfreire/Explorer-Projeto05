@@ -1,31 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root{
-  /*Fontes*/
+  --font-heading: 'Epilogue', sans-serif; /*Fonte do header */
+  --font-texting: 'Open sans', sans-serif; /*Fonte do body */
 
-  --ff-heading: 'Epilogue', sans-serif;
-  --ff-text: 'Open sans', sans-serif;
-
-  /*Colors*/
 
   --hue: 250;
-  --bg-primary: hsla(var(--hue), 22%, 20%);
-  --fc-primary: hsla(var(--hue), 0%, 100%);
-  --fc-secondary: hsla(var(--hue), 50%, 80%);
-  --fc-secondary-dark: hsl(var(--hue), 100%, 11%);
+  --background-primary: hsl(var(--hue), 22%, 20%); /*Cor de fundo da página*/
+  --font-color: hsl(var(--hue),0%, 100%); /*Cor da fonte da página*/
+  --font-recent: hsl(var(--hue), 50%, 80%); /*Fonte do "RECENTES" */
 
+  font-size: 62.5%;
+  --font-size-body: 1.6rem;
+  --font-size-heading: clamp(4rem, 1rem + 5vw, 5.6rem);
+  --font-size-heading-small: clamp(3rem, 0.5rem + 4vw, 4rem);
 
-  /*Tamanhos de fonte*/
-  
-  font-size: 62,5%; 
-  --fs-body: 1.6rem;
-  --fs-heading: 4.0rem;
 }
 
 body{
-  font-family: var(--ff-text);
-  font-size: var(--fs-body);
+  font-family: var(--font-texting);
+  font-size: var(--font-size-body);
 
-  background: var(--bg-primary);
-  color: var(--fc-primary);
+  background-color: var(--background-primary);
+  color: var(--font-color);
+
 }
 
 .page{
@@ -34,105 +36,107 @@ body{
 }
 
 img{
-  width: 100%;
+  width: 100%; /* Ao colocarmos nossa imagem com essa propriedade, fazemos que as imagens      
+                  se ajustem ao max-width: 33rem; */
   height: auto;
 }
 
 header{
   margin: 10rem 0 8rem;
+  font-family: var(--font-heading);
 
-  font-family: var(--ff-heading);
+  text-align: center; /*Centralizar o nosso head */
+  
+  animation: topdown 700ms;
+}  
 
-  text-align: center;  
-
-}
-
-header P {
-  color: var(--fc-secondary);
+header p {
+  color: var(--font-recent);
   text-transform: uppercase;
 
+  font-weight: 400;
   line-height: 3.2rem;
   letter-spacing: 3px;
-
-  font-weight: 400;
 
   margin-bottom: 1.7rem;
 }
 
 header h1{
-  font-size: var(--fs-heading);
+  font-size: var(--font-size-heading);
+  font-weight: 800;
   line-height: 4.8rem;
 }
 
 main{
   display: grid;
-  gap: 3.2rem;
+  gap: 3.2rem; /*Espaçamento dos cards*/
 
+  animation: downtop 700ms 350ms backwards;
 }
 
 .card{
   position: relative;
 
-  font-family: var(--ff-heading);
+  font-family: var(--font-heading);
 }
 
 .card img{
-  height: 41.6rem;
-  object-fit: cover;
 
-  border-radius: 6px;
-  transition: all 200ms;
+  height: 41.6rem;
+  object-fit: cover; /*Vai cobrir toda a caixa */
+
+  border-radius: 10px;
+
+  transition: all 300ms;
+
+  filter: brightness(0.5) saturate(0.9);
+
 }
 
 .card img:hover{
-  transform: scale(1.1); /* Faz com que a nossa imagem dê um zoom*/
-  transition-property: transform; /* Aqui informamos aonde nossa transition será aplicada*/
+  transform: scale(1.1);
   opacity: 0.4;
 }
 
-.card h2{
+.card h2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  
+
   position: absolute;
   bottom: 5.2rem;
   left: 2.8rem;
 
-  font-size: var(--fs-heading);
+  font-size: var(--font-size-heading-small) ;
   font-weight: 800;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2.3rem;
-
 }
 
 .card h2 span{
-  color: var(--fc-secondary-dark);
+  display: inline-flex; /* O span não recebe algumas propriedades como height, então aplicamos esse*/
+  align-items: center; /*Centralizar texto dentro do background*/
 
-  background-color: var(--fc-primary);
-  font-size: var(--fs-body);
+  border-radius: 2rem;
+  background-color: var(--font-color);
+  font-size: var(--font-size-body);
   font-weight: 400;
-  border-radius: 1.9rem;
+  color: black;
 
   padding: 0 1.6rem;
   height: 3.8rem;
 
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
+  width: fit-content; /*Propriedade para ajustar e encaixar o background branco de dentro da imagem*/
 }
 
-header{
-  animation: topdown 700ms;
-  
-}
-
-main{
-  animation: downtop 700ms 350ms backwards;
-}
-
-@keyframes topdown{
+@keyframes topdown{     /* At-rule para animações*/
   0%{
     opacity: 0;
     transform: translateY(-15px);
+  }
+
+  50%{
+    opacity: 0.5;
+    transform: translateY(-7.5px);
   }
 
   100%{
@@ -141,6 +145,7 @@ main{
   }
 }
 
+
 @keyframes downtop{
   0%{
     opacity: 0;
@@ -148,7 +153,44 @@ main{
   }
 
   100%{
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@media (min-width:700px){
+ 
+  .page{
+    max-width: 117rem;
+    padding: 0 5rem;
+  }
+
+  main{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(min-width:930px) {
+
+  main{
+    grid-template-areas: "A B B"
+    "C C D";
+  }
+
+  main div:nth-child(1){
+    grid-area: A;
+  }
+
+  main div:nth-child(2){
+    grid-area: B;
+  }
+
+  main div:nth-child(3){
+    grid-area: C;
+  }
+
+  main div:nth-child(4){
+    grid-area: D;
+  }
+
 }
